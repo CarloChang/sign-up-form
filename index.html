@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse | Iniciar sesión</title>
+    <link rel="stylesheet" href="normalize.css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main>
+        <div class="left-section">
+            <div class="logo">
+                <p><img src="imgs/odin-lined.png" alt="Odin Logo"> ODIN</p>
+            </div>
+            <footer>
+                Foto de <a>Halie West</a> desde <a>Unsplash</a>
+            </footer>
+        </div>
+        <div class="right-section">
+            <div class="upper">
+                <p>¡Este no es un sitio de servicio en línea real! Sabes que necesitas algo como esto en tu vida 
+                    para observar tus sueños más profundos.<br> Registrate <i>ahora</i> para empezar.
+                </p>
+                <p>Tú <i>sabes</i> que sí quieres.</p>
+            </div>
+            <div class="middle">
+                <h4>¡Empecemos!</h4>
+                <form action="#" method="post" id="my-form">
+                    <div class="inside">
+                        <span>
+                            <p><label for="firstname">NOMBRE</label></p>
+                            <input type="text" name="firstName" id="firstname">
+                        </span>
+                        <span>
+                            <p><label for="lastname">APELLIDO</label></p>
+                            <input type="text" name="lastName" id="lastname">
+                        </span>
+                        <span>
+                            <p><label for="email">CORREO ELECTRÓNICO</label></p>
+                            <input type="email" name="correo" id="email">
+                        </span>
+                        <span>
+                            <p><label for="phone">NÚMERO TELEFÓNICO</label></p>
+                            <input type="text" name="telefono" id="phone">
+                        </span>
+
+                        <span>
+                            <p><label for="password">CONTRASEÑA</label></p>
+                            <input type="password" name="pass" id="password">
+                        </span>
+
+                        <span>
+                            <p><label for="confirm-password">CONFIRME CONTRASEÑA</label></p>
+                            <input type="password" name="pass" id="confirm-password">
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="bottom">
+                <button type="submit" form="my-form">Crear Cuenta</button>
+                <p>¿Ya está registrado? <a>Ingrese aquí</a></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
