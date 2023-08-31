@@ -42,6 +42,10 @@ main {
 
 footer {
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 10vw;
+    
 }
 
 .right-section {
@@ -57,6 +61,13 @@ footer {
     font-size: 1.8rem;
     padding-right: 10vw;
     padding-top: 5vh;
+}
+
+.text {
+    font-weight: bolder;
+    font-size: 1.8rem;
+    padding-right: 10vw;
+    padding-bottom: 5vh;
 }
 
 .middle {
@@ -82,7 +93,7 @@ span p {
 }
 
 span {
-    padding: 0 5vw 6vh 0;
+    padding: 0 5vw 4vh 0;
 }
 
 .bottom {
@@ -90,14 +101,30 @@ span {
 }
 
 input {
-    border-radius: 2px;
+    border-radius: 3px;
     width: 15vw;
+    box-shadow: none;
+    padding: 10px 5px;
 }
 
-input:focus:invalid {
+input:placeholder-shown, input:focus  {
     box-shadow: none;
 }
 
-input:invalid {
-    box-shadow: 0 0 1px 1px rgb(249, 33, 33);
-  }
+input:not(:required):invalid, input:required:invalid:not(:placeholder-shown){
+    box-shadow: 0 0 1px 2px rgb(250, 0, 0);
+}
+
+button {
+    background-color: #596D48;
+    color: #FFF;
+    font-weight: bold;
+    padding: 12px 50px;
+    font-size: 1.2rem;
+    border-radius: 8%;
+    margin-top: 2vh;
+}
+
+.valid {
+    box-shadow: 0 0 1px 2px#596D48;
+}
