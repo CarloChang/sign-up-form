@@ -23,44 +23,44 @@
                 <p>¡Este no es un sitio de servicio en línea real! Sabes que necesitas algo como esto en tu vida 
                     para observar tus sueños más profundos.<br> Registrate <i>ahora</i> para empezar.
                 </p>
-                <p>Tú <i>sabes</i> que sí quieres.</p>
+                <div class="text">Tú <i>sabes</i> que sí quieres.</div >
             </div>
             <div class="middle">
                 <h4>¡Empecemos!</h4>
                 <form action="#" method="post" id="my-form">
                     <div class="inside">
                         <span>
-                            <p><label for="firstname">NOMBRE</label></p>
-                            <input type="text" name="firstName" id="firstname">
+                            <p><label for="firstname">NOMBRES</label></p>
+                            <input type="text" name="firstName" id="firstname" minlength="2" maxlength="30" required pattern="^[^0-9]+$" placeholder="Nombre(s) *">
                         </span>
                         <span>
                             <p><label for="lastname">APELLIDO</label></p>
-                            <input type="text" name="lastName" id="lastname">
+                            <input type="text" name="lastName" id="lastname" minlength="2" maxlength="30" required pattern="^[^0-9]+$" placeholder="Apellido *">
                         </span>
                         <span>
                             <p><label for="email">CORREO ELECTRÓNICO</label></p>
-                            <input type="email" name="correo" id="email">
+                            <input type="email" name="correo" id="email" required placeholder="ejemplo@ejemplo.com *">
                         </span>
                         <span>
                             <p><label for="phone">NÚMERO TELEFÓNICO</label></p>
-                            <input type="text" name="telefono" id="phone">
+                            <input type="text" name="telefono" id="phone" minlength="9" maxlength="9" pattern="[0-9]{9}" placeholder="987987987">
                         </span>
 
                         <span>
                             <p><label for="password">CONTRASEÑA</label></p>
-                            <input type="password" name="pass" id="password">
+                            <input type="password" name="pass" id="password" minlength="8" required pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{6,}" autocomplete="off">
                         </span>
 
                         <span>
                             <p><label for="confirm-password">CONFIRME CONTRASEÑA</label></p>
-                            <input type="password" name="pass" id="confirm-password">
+                            <input type="password" name="pass" id="confirm-password" minlength="8" required>
                         </span>
                     </div>
                 </form>
             </div>
             <div class="bottom">
                 <button type="submit" form="my-form">Crear Cuenta</button>
-                <p>¿Ya está registrado? <a>Ingrese aquí</a></p>
+                <p>¿Ya está registrado? <a href="#">Ingrese aquí</a></p>
             </div>
         </div>
     </main>
