@@ -52,7 +52,7 @@ footer {
     background-color: #F9FAFB;
     display: flex;
     flex-direction: column;
-    padding: 5vh 0 5vh 2vw;
+    padding: 3vh 0 5vh 2vw;
     width: 100%;
 }
 
@@ -83,7 +83,7 @@ h4 {
 .inside {
     display: flex;
     flex-wrap: wrap;
-    padding-right: 20vw;
+    padding-right: 10vw;
 }
 
 span p {
@@ -125,6 +125,43 @@ button {
     margin-top: 2vh;
 }
 
-.valid {
-    box-shadow: 0 0 1px 2px#596D48;
+#message {
+    display: none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px black;
+  }
+  
+  #message p {
+    padding: 10px 0 10px 35px;
+    font-size: 18px;
+  }
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "✅";
+  }
+  
+  /* Add a red text color and an "x" icon when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "X";
+  }
+
+  .unique {
+    position: static;
 }
