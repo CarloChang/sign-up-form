@@ -31,11 +31,11 @@
                     <div class="inside">
                         <span>
                             <p><label for="firstname">NOMBRES</label></p>
-                            <input type="text" name="firstName" id="firstname" minlength="2" maxlength="30" required pattern="^[^0-9]+$" placeholder="Nombre(s) *">
+                            <input type="text" name="firstName" id="firstname" maxlength="30" required pattern="^[^0-9]+$" placeholder="Nombre(s) *">
                         </span>
                         <span>
                             <p><label for="lastname">APELLIDO</label></p>
-                            <input type="text" name="lastName" id="lastname" minlength="2" maxlength="30" required pattern="^[^0-9]+$" placeholder="Apellido *">
+                            <input type="text" name="lastName" id="lastname" maxlength="30" required pattern="^[^0-9]+$" placeholder="Apellido *">
                         </span>
                         <span>
                             <p><label for="email">CORREO ELECTRÓNICO</label></p>
@@ -44,16 +44,28 @@
                         <span>
                             <p><label for="phone">NÚMERO TELEFÓNICO</label></p>
                             <input type="text" name="telefono" id="phone" minlength="9" maxlength="9" pattern="[0-9]{9}" placeholder="987987987">
+                            <div class="hidden">Solo debe escribir números</div>
                         </span>
 
-                        <span>
+                        <span id="unique">
                             <p><label for="password">CONTRASEÑA</label></p>
-                            <input type="password" name="pass" id="password" minlength="8" required pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{6,}" autocomplete="off">
+                            <input type="password" name="pass" id="password" minlength="8" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" autocomplete="off" placeholder="">
+                        
+                            <div id="message">
+                                <h3>La contraseña debe tener por lo menos lo siguiente:</h3>
+                                <p id="letter" class="invalid">Una letra en <i>minúscula</i></p>
+                                <p id="capital" class="invalid">Una letra en <i>mayúscula</i> </p>
+                                <p id="number" class="invalid">Un <i>número</i></p>
+                                <p id="symbol" class="invalid">Un <i>caracter especial</i></p>
+                                <p id="length" class="invalid">Mínimo <i>8 caracteres</i></p>
+                              </div>
+                        
                         </span>
+                        
 
                         <span>
                             <p><label for="confirm-password">CONFIRME CONTRASEÑA</label></p>
-                            <input type="password" name="pass" id="confirm-password" minlength="8" required>
+                            <input type="password" name="pass" id="confirm-password" minlength="8" required placeholder="">
                         </span>
                     </div>
                 </form>
