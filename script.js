@@ -1,62 +1,123 @@
+const form = document.querySelector('form');
+
 const firstName = document.getElementById('firstname');
+const firstNameError = document.getElementById('hidden-name');
 
 const lastName = document.getElementById('lastname');
-
-let uniqueSpan = document.getElementById('unique');
-let myInput = document.getElementById("password");
-let letter = document.getElementById("letter");
-let capital = document.getElementById("capital");
-let number = document.getElementById("number");
-let specialCharacters = document.getElementById('symbol');
-let length = document.getElementById("length");
-const leftSection = document.querySelector(".left-section");
+const lastNameError = document.getElementById('hidden-lastname');
 
 const email = document.getElementById('email');
+const emailError = document.getElementById('hidden-email');
 
-email.addEventListener("input", e => {
-    if (email.validity.typeMismatch) {
-      email.setCustomValidity("Formato de correo inválido");
+const phoneNumber = document.getElementById('phone');
+const phoneError = document.getElementById('hidden-phone');
+const phoneLengthError = document.getElementById('hidden-length');
+
+const password = document.getElementById("password");
+const letter = document.getElementById("letter");
+const capital = document.getElementById("capital");
+const number = document.getElementById("number");
+const specialCharacters = document.getElementById('symbol');
+const length = document.getElementById("length");
+
+const confirmPassword = document.getElementById('confirm-password');
+const confirmPasswordError = document.getElementById('hidden-cpassword');
+
+form.addEventListener('submit', e => {
+  if (!firstName.validity.valid || !lastName.validity.valid ||
+      !email.validity.valid || !phoneNumber.validity.valid ||
+      !password.validity.valid || confirmPassword.value !== password.value) {
+    e.preventDefault();
+  }
+  if (firstName.validity.valueMissing) {
+    firstName.setCustomValidity('Debe ingresar un nombre');
+    console.log('test') //fix
+  }
+});
+
+firstName.addEventListener('input', () => {
+  if (firstName.validity.patternMismatch) {
+      firstNameError.classList.remove('hidden');
+      firstNameError.classList.add('show');
       
+  } else {
+    firstNameError.classList.add('hidden');
+    firstNameError.classList.remove('show');
+  }
+});
+
+lastName.addEventListener('input', () => {
+  if (lastName.validity.patternMismatch) {
+    lastNameError.classList.remove('hidden');
+    lastNameError.classList.add('show');
+  } else {
+      lastNameError.classList.add('hidden');
+      lastNameError.classList.remove('show');
+  }
+});
+
+email.addEventListener("input", () => {
+  const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if (email.value.match(emailPattern)) {
+    emailError.classList.add('hidden');
+    emailError.classList.remove('show');
+  } else {
+    emailError.classList.remove('hidden');
+    emailError.classList.add('show');
+  }
+});
+
+phoneNumber.addEventListener('input', () => {
+     if (phoneNumber.value.length !== 9) {
+      phoneLengthError.classList.remove('hidden');
+      phoneLengthError.classList.add('show');
     } else {
-      email.setCustomValidity("");
+      phoneLengthError.classList.add('hidden');
+      phoneLengthError.classList.remove('show');
+    }
+    
+    const phonePattern = /^\d+$/;
+    if (!phoneNumber.value.match(phonePattern)) {
+      phoneError.classList.remove('hidden');
+      phoneError.classList.add('show');
+    } else {
+      phoneError.classList.add('hidden');
+      phoneError.classList.remove('show');
+      
     }
 });
 
-firstName.addEventListener('input', e => {
-    if (firstName.validity.patternMismatch) {
-        firstName.setCustomValidity('El nombre no debe contener números o símbolos');
-    } else {
-        firstName.setCustomValidity('');
-    }
+function validateConfirmPassword() {
+  if (confirmPassword.value !== password.value) {
+    confirmPasswordError.classList.remove('hidden');
+    confirmPasswordError.classList.add('show');
+  } else {
+    confirmPasswordError.classList.add('hidden');
+    confirmPasswordError.classList.remove('show');
+  }
+}
+
+password.addEventListener('input', () => {
+  validateConfirmPassword();
 });
 
-lastName.addEventListener('input', e => {
-      if (lastName.validity.patternMismatch) {
-        lastName.setCustomValidity('El apellido no debe contener números o símbolos');
-        console.log('test2')
-    } else {
-        lastName.setCustomValidity('');
-    }
+confirmPassword.addEventListener('input', () => {
+  validateConfirmPassword();
 });
 
 
-// When the user clicks on the password field, show the message box
-myInput.onfocus = function() {
+password.onfocus = function() {
   document.getElementById("message").style.display = "block";
-  uniqueSpan.classList.add('unique');
 }
 
-// When the user clicks outside of the password field, hide the message box
-myInput.onblur = function() {
+password.onblur = function() {
   document.getElementById("message").style.display = "none";
-  uniqueSpan.classList.remove('unique');
 }
 
-// When the user starts to type something inside the password field
-myInput.onkeyup = function() {
-  // Validate lowercase letters
+password.onkeyup = function() {
+
   const lowerCaseLetters = /[a-z]/g;
-  if(myInput.value.match(lowerCaseLetters)) {
+  if(password.value.match(lowerCaseLetters)) {
     letter.classList.remove("invalid");
     letter.classList.add("valid");
   } else {
@@ -64,9 +125,8 @@ myInput.onkeyup = function() {
     letter.classList.add("invalid");
 }
 
-  // Validate capital letters
   const upperCaseLetters = /[A-Z]/g;
-  if(myInput.value.match(upperCaseLetters)) {
+  if(password.value.match(upperCaseLetters)) {
     capital.classList.remove("invalid");
     capital.classList.add("valid");
   } else {
@@ -74,9 +134,8 @@ myInput.onkeyup = function() {
     capital.classList.add("invalid");
   }
 
-  // Validate numbers
   const numbers = /[0-9]/g;
-  if(myInput.value.match(numbers)) {
+  if(password.value.match(numbers)) {
     number.classList.remove("invalid");
     number.classList.add("valid");
   } else {
@@ -85,7 +144,7 @@ myInput.onkeyup = function() {
   }
 
   const symbols = /[-!$%^&*()_+|~=`{}\[\]:\/;<>?,.@#]/g;
-  if(myInput.value.match(symbols)) {
+  if(password.value.match(symbols)) {
     specialCharacters.classList.remove("invalid");
     specialCharacters.classList.add("valid");
   } else {
@@ -93,8 +152,7 @@ myInput.onkeyup = function() {
     specialCharacters.classList.add("invalid");
   }
 
-  // Validate length
-  if(myInput.value.length >= 8) {
+  if(password.value.length >= 8) {
     length.classList.remove("invalid");
     length.classList.add("valid");
   } else {
@@ -102,3 +160,5 @@ myInput.onkeyup = function() {
     length.classList.add("invalid");
   }
 }
+
+
