@@ -45,7 +45,14 @@ footer {
     position: fixed;
     bottom: 0;
     left: 10vw;
-    
+}
+
+footer a, .left-section a {
+    color: #FFF;
+}
+
+.left-section a {
+    text-decoration: none;
 }
 
 .right-section {
@@ -98,6 +105,12 @@ span {
 
 .bottom {
     padding-right: 10vw;
+}
+
+.bottom a {
+    color:#596D48;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 input {
@@ -160,8 +173,8 @@ left: -35px;
 content: "X";
 }
 
-.hidden {
-    display: none; 
+.hidden, .required {
+    display: none;  
 }
 
 .show {

@@ -24,16 +24,36 @@ const confirmPassword = document.getElementById('confirm-password');
 const confirmPasswordError = document.getElementById('hidden-cpassword');
 
 form.addEventListener('submit', e => {
-  if (!firstName.validity.valid || !lastName.validity.valid ||
-      !email.validity.valid || !phoneNumber.validity.valid ||
-      !password.validity.valid || confirmPassword.value !== password.value) {
-    e.preventDefault();
-  }
-  if (firstName.validity.valueMissing) {
-    firstName.setCustomValidity('Debe ingresar un nombre');
-    console.log('test') //fix
+  const requiredInputs = document.querySelectorAll('input[required]');
+  let hasError = false;
+
+  requiredInputs.forEach(input => {
+    if (input.validity.valueMissing) {
+      const errorMessage = input.parentElement.querySelector('.required');
+      errorMessage.classList.remove('hidden');
+      errorMessage.classList.add('show');
+      hasError = true;
+    } else {
+      const errorMessage = input.parentElement.querySelector('.required');
+      errorMessage.classList.add('hidden');
+      errorMessage.classList.remove('show');
+    }
+
+    if (!input.validity.valid) {
+      e.preventDefault();
+      hasError = true;
+    }
+  });
+
+    if(password.value !== confirmPassword.value) {
+      hasError = true
+    }
+
+  if (hasError) {
+    e.preventDefault(); // Prevent form submission if any input is empty or invalid.
   }
 });
+
 
 firstName.addEventListener('input', () => {
   if (firstName.validity.patternMismatch) {
