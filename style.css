@@ -49,6 +49,12 @@ footer {
 
 footer a, .left-section a {
     color: #FFF;
+    font-weight: bold;
+    transition: 0.1s;
+}
+
+footer a:hover, .left-section a:hover {
+    transform: scale(1.1);
 }
 
 .left-section a {
